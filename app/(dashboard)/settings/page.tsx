@@ -44,14 +44,14 @@ export default function SettingsPage() {
                             <label className="text-base font-medium">Email Notifications</label>
                             <p className="text-sm text-gray-500">Receive emails about new leave requests</p>
                         </div>
-                        <input type="checkbox" className="h-4 w-4" defaultChecked />
+                        <Switch defaultChecked />
                     </div>
                     <div className="flex items-center justify-between">
                         <div className="space-y-0.5">
                             <label className="text-base font-medium">Payroll Alerts</label>
                             <p className="text-sm text-gray-500">Get notified when payroll is due</p>
                         </div>
-                        <input type="checkbox" className="h-4 w-4" defaultChecked />
+                        <Switch defaultChecked />
                     </div>
                 </CardContent>
             </Card>

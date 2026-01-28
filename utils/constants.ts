@@ -20,5 +20,7 @@ export const STATUS_COLORS = {
     Present: 'bg-emerald-100 text-emerald-800',
     Absent: 'bg-rose-100 text-rose-800',
     Late: 'bg-amber-100 text-amber-800',
-    'Half Day': 'bg-purple-100 text-purple-800'
+    'Half Day': 'bg-purple-100 text-purple-800',
+    'On Leave': 'bg-blue-100 text-blue-800',
+    Processed: 'bg-blue-100 text-blue-800'
 };
