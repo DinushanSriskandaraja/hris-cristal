@@ -15,5 +15,10 @@ export const STATUS_COLORS = {
     Approved: 'bg-green-100 text-green-800',
     Rejected: 'bg-red-100 text-red-800',
     Paid: 'bg-green-100 text-green-800',
-    Draft: 'bg-gray-100 text-gray-800'
+    Draft: 'bg-gray-100 text-gray-800',
+    // Attendance Statuses
+    Present: 'bg-emerald-100 text-emerald-800',
+    Absent: 'bg-rose-100 text-rose-800',
+    Late: 'bg-amber-100 text-amber-800',
+    'Half Day': 'bg-purple-100 text-purple-800'
 };
