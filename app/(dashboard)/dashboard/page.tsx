@@ -152,67 +152,78 @@ export default function DashboardPage() {
 
     return (
         <div className="space-y-6">
-            <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">
-                Dashboard Overview
-            </h1>
+            <div className="flex flex-col gap-2">
+                <h1 className="text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-zinc-900 to-zinc-500 dark:from-white dark:to-zinc-400">
+                    Dashboard
+                </h1>
+                <p className="text-zinc-500">Overview of your organization's performance.</p>
+            </div>
 
-            {/* Stats Cards */}
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-                <Card>
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            {/* Bento Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-4 auto-rows-[minmax(180px,auto)]">
+
+                {/* Stats - Top Row */}
+                <Card className="col-span-12 md:col-span-3 flex flex-col justify-center relative overflow-hidden group">
+                    <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <Users className="w-24 h-24" />
+                    </div>
+                    <CardHeader className="pb-2">
                         <CardTitle className="text-sm font-medium text-zinc-500">Total Employees</CardTitle>
-                        <Users className="h-4 w-4 text-zinc-500" />
                     </CardHeader>
                     <CardContent>
-                        <div className="text-2xl font-bold">{stats.totalEmployees}</div>
+                        <div className="text-4xl font-bold">{stats.totalEmployees}</div>
                         <p className="text-xs text-zinc-500 mt-1">+2 from last month</p>
                     </CardContent>
                 </Card>
 
-                <Card>
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                <Card className="col-span-12 md:col-span-3 flex flex-col justify-center relative overflow-hidden group">
+                    <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <UserCheck className="w-24 h-24" />
+                    </div>
+                    <CardHeader className="pb-2">
                         <CardTitle className="text-sm font-medium text-zinc-500">Present Today</CardTitle>
-                        <UserCheck className="h-4 w-4 text-zinc-500" />
                     </CardHeader>
                     <CardContent>
-                        <div className="text-2xl font-bold">{stats.presentToday}</div>
+                        <div className="text-4xl font-bold">{stats.presentToday}</div>
                         <p className="text-xs text-zinc-500 mt-1">92% Average attendance</p>
                     </CardContent>
                 </Card>
 
-                <Card>
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                <Card className="col-span-12 md:col-span-3 flex flex-col justify-center relative overflow-hidden group">
+                    <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <Briefcase className="w-24 h-24" />
+                    </div>
+                    <CardHeader className="pb-2">
                         <CardTitle className="text-sm font-medium text-zinc-500">On Leave</CardTitle>
-                        <Briefcase className="h-4 w-4 text-zinc-500" />
                     </CardHeader>
                     <CardContent>
-                        <div className="text-2xl font-bold">{stats.onLeave}</div>
+                        <div className="text-4xl font-bold">{stats.onLeave}</div>
                         <p className="text-xs text-zinc-500 mt-1">Approved leaves for today</p>
                     </CardContent>
                 </Card>
 
-                <Card>
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                <Card className="col-span-12 md:col-span-3 flex flex-col justify-center relative overflow-hidden group">
+                    <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <CreditCard className="w-24 h-24" />
+                    </div>
+                    <CardHeader className="pb-2">
                         <CardTitle className="text-sm font-medium text-zinc-500">Payroll Pending</CardTitle>
-                        <CreditCard className="h-4 w-4 text-zinc-500" />
                     </CardHeader>
                     <CardContent>
-                        <div className="text-2xl font-bold text-zinc-900">{stats.payrollPending}</div>
+                        <div className="text-4xl font-bold">{stats.payrollPending}</div>
                         <p className="text-xs text-zinc-500 mt-1">Records need processing</p>
                     </CardContent>
                 </Card>
-            </div>
 
-            {/* Charts */}
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-                <Card className="col-span-4">
+                {/* Main Chart - Large Span */}
+                <Card className="col-span-12 md:col-span-8 md:row-span-2">
                     <CardHeader>
                         <CardTitle>Attendance Trends</CardTitle>
                     </CardHeader>
-                    <CardContent className="pl-2">
-                        <ResponsiveContainer width="100%" height={300}>
+                    <CardContent className="pl-2 h-[350px]">
+                        <ResponsiveContainer width="100%" height="100%">
                             <BarChart data={attendanceData}>
-                                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e4e4e7" />
+                                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e4e4e7" strokeOpacity={0.5} />
                                 <XAxis
                                     dataKey="name"
                                     stroke="#71717a"
@@ -228,49 +239,56 @@ export default function DashboardPage() {
                                     tickFormatter={(value) => `${value}`}
                                 />
                                 <Tooltip
-                                    cursor={{ fill: '#f4f4f5' }}
-                                    contentStyle={{ borderRadius: '6px', border: '1px solid #e4e4e7', boxShadow: 'none' }}
+                                    cursor={{ fill: 'rgba(0,0,0,0.05)' }}
+                                    contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)', background: 'rgba(255, 255, 255, 0.9)' }}
                                 />
-                                <Bar dataKey="present" fill="currentColor" radius={[4, 4, 0, 0]} className="fill-zinc-900 dark:fill-zinc-50" />
+                                <Bar dataKey="present" fill="url(#colorGradient)" radius={[6, 6, 0, 0]} />
+                                <defs>
+                                    <linearGradient id="colorGradient" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="5%" stopColor="#818cf8" stopOpacity={0.8} />
+                                        <stop offset="95%" stopColor="#c084fc" stopOpacity={0.8} />
+                                    </linearGradient>
+                                </defs>
                             </BarChart>
                         </ResponsiveContainer>
                     </CardContent>
                 </Card>
 
-                <Card className="col-span-3">
+                {/* Secondary Chart & Quick Actions */}
+                <Card className="col-span-12 md:col-span-4 md:row-span-2 flex flex-col">
                     <CardHeader>
                         <CardTitle>Employee Distribution</CardTitle>
                     </CardHeader>
-                    <CardContent>
-                        <ResponsiveContainer width="100%" height={300}>
+                    <CardContent className="flex-1 min-h-[300px]">
+                        <ResponsiveContainer width="100%" height="100%">
                             <PieChart>
                                 <Pie
                                     data={departmentData}
                                     cx="50%"
                                     cy="50%"
-                                    innerRadius={60}
-                                    outerRadius={80}
-                                    fill="#8884d8"
+                                    innerRadius={70}
+                                    outerRadius={90}
                                     paddingAngle={5}
                                     dataKey="value"
                                 >
                                     {departmentData.map((entry, index) => (
-                                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} stroke="none" />
                                     ))}
                                 </Pie>
-                                <Tooltip />
+                                <Tooltip contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} />
                             </PieChart>
                         </ResponsiveContainer>
-                        <div className="mt-4 flex justify-center gap-4 text-sm text-gray-500">
+                        <div className="flex flex-wrap justify-center gap-2 mt-4">
                             {departmentData.map((d, i) => (
-                                <div key={d.name} className="flex items-center gap-1">
+                                <div key={d.name} className="flex items-center gap-1.5 bg-zinc-100 dark:bg-zinc-800 px-2 py-1 rounded-full text-xs">
                                     <div className="h-2 w-2 rounded-full" style={{ backgroundColor: COLORS[i % COLORS.length] }}></div>
-                                    {d.name}
+                                    <span className="font-medium">{d.name}</span>
                                 </div>
                             ))}
                         </div>
                     </CardContent>
                 </Card>
+
             </div>
         </div>
     );
