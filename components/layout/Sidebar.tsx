@@ -101,7 +101,7 @@ export function Sidebar({ sidebarOpen, setSidebarOpen }: SidebarProps) {
                         </div>
                         <div>
                             <p className="text-sm font-medium text-foreground">{COMPANY_NAME}</p>
-                            <p className="text-xs text-muted-foreground">Free Plan</p>
+                            <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Powered by TribeTek</p>
                         </div>
                     </div>
                 </div>

@@ -97,6 +97,9 @@ export default function LoginPage() {
                     <p className="text-sm font-mono text-zinc-700 dark:text-zinc-300">admin@company.com / Admin123</p>
                 </div>
             </div>
+            <div className="mt-4 text-center">
+                <p className="text-[10px] text-zinc-400 uppercase tracking-widest">Powered by TribeTek</p>
+            </div>
         </div>
     );
 }

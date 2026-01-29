@@ -1,5 +1,5 @@
-export const APP_NAME = 'HRIS Cristal';
-export const COMPANY_NAME = 'Cristal Corp';
+export const APP_NAME = 'HRIS by TribeTek';
+export const COMPANY_NAME = 'TribeTek';
 
 export const ROLES = {
     ADMIN: 'admin',
